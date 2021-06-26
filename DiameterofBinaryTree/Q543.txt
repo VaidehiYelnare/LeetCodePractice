@@ -1,0 +1,31 @@
+
+  Definition for a binary tree node.
+  public class TreeNode {
+      public int val;
+      public TreeNode left;
+      public TreeNode right;
+      public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+          this.val = val;
+          this.left = left;
+          this.right = right;
+      }
+  }
+ 
+public class Solution {
+    public int DiameterOfBinaryTree(TreeNode root) {
+        if(root == null)
+            return 0;
+        int leftHeight = HeightOfBinaryTree(root.left);
+        int rightHeight = HeightOfBinaryTree(root.right);
+        int leftDiameter = DiameterOfBinaryTree(root.left);
+        int rightDiameter = DiameterOfBinaryTree(root.right);
+        return Math.Max(leftHeight+rightHeight,Math.Max(leftDiameter,rightDiameter));
+
+    }
+    
+    public int HeightOfBinaryTree(TreeNode node){
+        if(node == null)
+            return 0;
+        return 1 + Math.Max(HeightOfBinaryTree(node.left),HeightOfBinaryTree(node.right));
+    }
+}
