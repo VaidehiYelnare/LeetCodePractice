@@ -1,0 +1,19 @@
+public class Solution {
+    public IList<int> AddToArrayForm(int[] num, int k) {
+        List<int> ans = new List<int>();
+        int n = num.Length;
+        int cur = k;
+        int i = n;
+        while(i-- >0 || cur > 0){
+            if(i>=0)
+           {  
+                cur = cur + num[i];
+            }
+         
+            ans.Add(cur%10);
+            cur = cur/10;
+        }
+        ans.Reverse();
+        return ans;
+    }
+}
