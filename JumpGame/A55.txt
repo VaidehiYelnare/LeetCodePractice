@@ -1,0 +1,15 @@
+public class Solution {
+    public bool CanJump(int[] nums) {
+        int i=0;
+        int maxReach = 0;
+        int numsLength = nums.Length;
+        while(i<numsLength && i<=maxReach){
+            maxReach = Math.Max(i+nums[i],maxReach);
+            i++;
+           
+        }
+        if(i == numsLength)
+            return true;
+        return false;
+    }
+}
