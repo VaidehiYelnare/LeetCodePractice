@@ -1,0 +1,18 @@
+
+public class Solution {
+    public bool IsIsomorphic(string s, string t) {  
+        if(s.Length != t.Length || s==null || t==null)
+            return false;
+         int[]m1 = new int[256];
+         int[]m2 = new int[256];
+         for(int i=0;i<s.Length;i++){
+             char ch1 = s[i];
+             char ch2 = t[i];
+             if(m1[ch1] != m2[ch2])
+                 return false;
+             m1[ch1] = i+1;
+             m2[ch2] = i+1;
+         }
+        return true;
+    }
+} 
