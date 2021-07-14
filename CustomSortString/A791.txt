@@ -1,0 +1,23 @@
+public class Solution {
+    public string CustomSortString(string order, string str) {
+          Dictionary<char, StringBuilder> dict = new Dictionary<char, StringBuilder>();
+            StringBuilder sbobj = new StringBuilder();
+            foreach(char ch in order){
+                 dict.Add(ch, new StringBuilder());
+            }
+               
+            dict.Add('0', new StringBuilder());
+            foreach(char ch in str)
+            {
+                if (!dict.ContainsKey(ch))
+                    dict['0'] = dict['0'].Append(ch);    
+                else
+                    dict[ch] =  dict[ch].Append(ch);
+            }
+            foreach (StringBuilder sb in dict.Values){
+                sbobj.Append(sb.ToString());
+            }
+                
+            return sbobj.ToString();
+    }
+}
