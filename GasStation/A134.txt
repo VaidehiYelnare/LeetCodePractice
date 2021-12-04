@@ -1,0 +1,24 @@
+public class Solution {
+    public int CanCompleteCircuit(int[] gas, int[] cost) {
+        int gasTotal = 0;
+        int costTotal = 0;
+        for(int i=0;i<gas.Length;i++){
+            gasTotal = gasTotal+ gas[i];
+            costTotal = costTotal+cost[i];
+           }  
+            if(costTotal > gasTotal)
+                return -1;
+            
+            gasTotal = 0;
+            int startIndex = 0;
+            
+            for(int i=0;i<gas.Length;i++){
+                gasTotal = gasTotal + gas[i] - cost[i];
+                if(gasTotal < 0){
+                    startIndex = i+1;
+                    gasTotal = 0;
+                }
+            }
+            return startIndex;       
+    } 
+}
